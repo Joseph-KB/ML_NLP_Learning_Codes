@@ -13,5 +13,5 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 else
     echo "Unsupported OS : $OSTYPE"
 fi
-x
+
 code .
