@@ -1,22 +1,26 @@
 #!/bin/bash
 
-# ~/Desktop/Obsidian-1.4.16-arm64.AppImage &&
+VIRTUALEN_FILE_NAME="venv"
+PYTHON_VERSION="python3.11"
+
 echo "Complete Machine Learning NLP Bootcamp MLOPS and Deployment by KRISH NAIK via UDEMY"
 echo "-----OSTYPE-------$OSTYPE------------"
 
 create_virtualenv(){
-    echo "Creating Virtualenv PYTHON --VERSION 3.11"
-    virtualenv venv -p "python3.11"
+    echo "Pip installing virtualenv if not installed"
+    pip install --user "virtualenv==20.26.2"
+    echo "Creating Virtualenv PYTHON --VERSION $PYTHON_VERSION"
+    virtualenv $VIRTUALEN_FILE_NAME -p "$PYTHON_VERSION"
 }
 
 activate_venv_windows(){
     echo "Activating VENV on windows machine"
-    source ./venv/Scripts/activate
+    source ./$VIRTUALEN_FILE_NAME/Scripts/activate
 }
 
 activate_venv_linux(){
     echo "Activating VENV on linux machine"
-    source ./venv/bin/activate
+    source ./$VIRTUALEN_FILE_NAME/bin/activate
 }
 
 pip_install_requirements(){
@@ -25,14 +29,14 @@ pip_install_requirements(){
 }
 
 if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
-    if [[ ! -d "venv" ]]; then
+    if [[ ! -d "$VIRTUALEN_FILE_NAME" ]]; then
         create_virtualenv
     fi
     activate_venv_windows
     pip_install_requirements
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    if [[ ! -d "venv" ]]; then
+    if [[ ! -d "$VIRTUALEN_FILE_NAME" ]]; then
         create_virtualenv
     fi
     activate_venv_linux
