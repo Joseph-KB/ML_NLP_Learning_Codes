@@ -13,7 +13,7 @@ install_virtualenv(){
 
 create_venv_windows(){
     echo "Creating Virtualenv --"$VIRTUALENV_FILE_NAME" PYTHON --VERSION $PYTHON_VERSION"
-    python -m venv $VIRTUALENV_FILE_NAME -p "$PYTHON_VERSION"
+    py -3 -m venv $VIRTUALENV_FILE_NAME
 }
 
 create_venv_linux(){
