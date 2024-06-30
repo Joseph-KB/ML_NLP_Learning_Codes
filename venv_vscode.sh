@@ -6,10 +6,18 @@ PYTHON_VERSION="python3"
 echo "Complete Machine Learning NLP Bootcamp MLOPS and Deployment by KRISH NAIK via UDEMY"
 echo "-----OSTYPE-------$OSTYPE------------"
 
-create_virtualenv(){
+install_virtualenv(){
     echo "Pip installing virtualenv if not installed"
     pip install --user "virtualenv==20.26.2"
-    echo "Creating Virtualenv PYTHON --VERSION $PYTHON_VERSION"
+}
+
+create_venv_windows(){
+    echo "Creating Virtualenv --"$VIRTUALENV_FILE_NAME" PYTHON --VERSION $PYTHON_VERSION"
+    python -m venv $VIRTUALENV_FILE_NAME -p "$PYTHON_VERSION"
+}
+
+create_venv_linux(){
+    echo "Creating Virtualenv --"$VIRTUALENV_FILE_NAME" PYTHON --VERSION $PYTHON_VERSION"
     virtualenv $VIRTUALENV_FILE_NAME -p "$PYTHON_VERSION"
 }
 
@@ -30,14 +38,16 @@ pip_install_requirements(){
 
 if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
     if [[ ! -d "$VIRTUALENV_FILE_NAME" ]]; then
-        create_virtualenv
+        install_virtualenv
+        create_venv_windows
     fi
     activate_venv_windows
     pip_install_requirements
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if [[ ! -d "$VIRTUALENV_FILE_NAME" ]]; then
-        create_virtualenv
+        install_virtualenv
+        create_venv_linux
     fi
     activate_venv_linux
     pip_install_requirements 
