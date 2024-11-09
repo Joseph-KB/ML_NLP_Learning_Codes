@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+</head>
+<body>
+    <h2>Give the inputs for respective fields</h2>
+    <form action="{{url_for('predict_data')}}" method="POST">
+        <!-- Text input -->
+        <label for="Temperature">Temperature:</label>
+        <input type="text" id="Temperature" name="Temperature" required><br><br>
+
+        <!-- Text input -->
+        <label for="RH">Realtive Humidity:</label>
+        <input type="text" id="RH" name="RH" required><br><br>
+
+        <!-- Text input -->
+        <label for="WS">WS:</label>
+        <input type="text" id="WS" name="WS" required><br><br>
+
+        <!-- Text input -->
+        <label for="Rain">Rain:</label>
+        <input type="text" id="Rain" name="Rain" required><br><br>
+
+        <!-- Text input -->
+        <label for="FFMC">FFMC:</label>
+        <input type="text" id="FFMC" name="FFMC" required><br><br>
+
+        <!-- Text input -->
+        <label for="DMC">DMC:</label>
+        <input type="text" id="DMC" name="DMC" required><br><br>
+
+        <!-- Text input -->
+        <label for="ISI">ISI:</label>
+        <input type="text" id="ISI" name="ISI" required><br><br>
+
+        <!-- Text input -->
+        <!-- <label for="Classes">Classes:</label>
+        <input type="text" id="Classes" name="Classes" required><br><br> -->
+        
+        <label for="Classes">Classes:</label>
+        <select id="Classes" name="Classes">
+            <option value="0">Not Fire</option>
+            <option value="1">Fire</option>
+        </select><br><br>
+        <!-- Text input -->
+        <!-- <label for="Region">Region:</label>
+        <input type="text" id="Region" name="Region" required><br><br> -->
+
+        <label for="Region">Region:</label>
+        <select id="Region" name="Region">
+            <option value="0">Bejaria</option>
+            <option value="1">Sidi - Bela</option>
+        </select><br><br>
+
+        <!-- Submit button -->
+        <input type="submit" value="Submit">
+    </form>
+    <h2>The FWI Prediction is {{results}}</h2>
+</body>
+</html>
