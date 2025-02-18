@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VIRTUALENV_FILE_NAME="venv"
-PYTHON_VERSION="python3"
+PYTHON_VERSION="python3.12"
 
 echo "Complete Machine Learning NLP Bootcamp MLOPS and Deployment by KRISH NAIK via UDEMY"
 echo "-----OSTYPE-------$OSTYPE------------"
