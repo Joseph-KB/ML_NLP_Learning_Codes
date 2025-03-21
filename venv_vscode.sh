@@ -11,6 +11,11 @@ install_virtualenv(){
     pip install --user "virtualenv==20.26.2"
 }
 
+install_virtualenv_linux(){
+    echo "Pip installing virtualenv if not installed"
+    pip install --user "virtualenv==20.26.2" --break-system-packages
+}
+
 create_venv_windows(){
     echo "Creating Virtualenv --"$VIRTUALENV_FILE_NAME" PYTHON --VERSION $PYTHON_VERSION"
     py -3 -m venv $VIRTUALENV_FILE_NAME
@@ -46,7 +51,7 @@ if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if [[ ! -d "$VIRTUALENV_FILE_NAME" ]]; then
-        install_virtualenv
+        install_virtualenv_linux
         create_venv_linux
     fi
     activate_venv_linux
